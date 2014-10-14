@@ -1,6 +1,6 @@
+<h1> ALL THE PRODUCTS </h1>
+<p><strong><%=link_to "New Product", new_product_path %></strong></p>
 <% @products.each do |p| %>
   <p><%= p.inspect %></p>
   <%=link_to "Edit this product.", edit_product_path(p.id) %>
 <% end %>
-
-<%=link_to "New Product", new_product_path %>

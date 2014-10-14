@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @review = @product.reviews.build
   end
 
   def create
     @product = Product.new(whitelisted_params)
-
     if @product.save
       redirect_to action: :index
     else
@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.reviews.build
   end
 
   def update
@@ -34,6 +35,10 @@ class ProductsController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:product).permit(:name, :description, :price, :category_ids)
+    params.require(:product).permit(:name, :description, :price,
+                                    :category_ids => [],
+                                    :reviews_attributes =>
+                                    [:title, :body, :source, :id,
+                                                        :_destroy ])
   end
 end

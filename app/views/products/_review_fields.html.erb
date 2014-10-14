@@ -1,0 +1,19 @@
+<h2> Product Reviews </h2>
+    <%= product_fields.fields_for :reviews do |review_fields| %>
+
+    <h3>A reviewer says:</h3>
+      <%= review_fields.label :title %>
+      <%= review_fields.text_field :title %>
+      <br>
+      <%= review_fields.label :body %>
+      <%= review_fields.text_area :body %>
+      <br>
+      <%= review_fields.label :source %>
+      <%= review_fields.text_field :source %>
+
+      <% if review_fields.object.persisted? %>
+        <%= review_fields.label :_destroy, "Delete this review?" %>
+        <%= review_fields.check_box :_destroy %>
+      <% end %>
+
+    <% end %>

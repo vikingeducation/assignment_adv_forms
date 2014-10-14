@@ -13,5 +13,13 @@
 
   <%= product_fields.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
+
+
+  <%= render partial: "review_fields", locals: { product: @product,
+                                       product_fields: product_fields } %>
+
+
+
   <%= product_fields.submit "Let's Get Rich" %>
+
 <% end %>
