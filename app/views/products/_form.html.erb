@@ -1,0 +1,17 @@
+<%= form_for @product do |product_fields| %>
+
+  <%= product_fields.label :name %>
+  <%= product_fields.text_field :name %>
+  <br>
+  <%= product_fields.label :description %>
+  <%= product_fields.text_area :description %>
+  <br>
+  <%= product_fields.label :price %>
+  <%= product_fields.text_field :price %>
+
+  <h2> Select the Categories this product will be sold under</h2>
+
+  <%= product_fields.collection_check_boxes :category_ids, Category.all, :id, :name %>
+
+  <%= product_fields.submit "Let's Get Rich" %>
+<% end %>
