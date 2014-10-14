@@ -41,7 +41,11 @@ class PoliticiansController < ApplicationController
     params.
     require(:politician).
     permit(:name,
-           :party, {:slogans_attributes => [
-            :name ]}, :slogan_ids => [])
+           :party,
+           :slogan_ids => [],
+           :slogans_attributes => [
+           :name,
+           :id,
+           :_destroy])
   end
 end

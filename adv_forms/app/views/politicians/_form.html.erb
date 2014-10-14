@@ -11,12 +11,25 @@
   <%= pol.collection_check_boxes :slogan_ids, Slogan.all, :id, :name, {}, {class: "pol-select"} %>
   <br />
 
-  
-  <%= pol.fields_for :slogans do |slogan| %>
-  	<%= slogan.label :name, "New Slogan Name" %>
-  	<%= slogan.text_field :name, value: " " %>
+  <h3>Slogans</h3>
+  <h4>Create new:</h4>
+	  <%= pol.fields_for :slogans, Slogan.new do |slogan| %>
+	  	<%= slogan.label :name, "New Slogan: " %>
+	  	<%= slogan.text_field :name%>
+	  <% end %>
 
- <% end %>
+
+  <h4>Edit existing:</h4>
+
+  <%= pol.fields_for :slogans do |slogan| %>
+  	<%= slogan.label :name, slogan.object.name %>
+  	<%= slogan.text_field :name%>
+  	<% if slogan.object.persisted? %>
+      <%= slogan.label :_destroy, "Delete Slogan?" %>
+      <%= slogan.check_box :_destroy %>
+    <% end %>
+    <br />
+  <% end %>
 
 
   <%= pol.submit %>
