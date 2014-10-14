@@ -1,0 +1,8 @@
+<h2>Politicians</h2>
+<ul>
+	<% @politicians.each do |i| %>
+	<li><%= link_to i.name, i %></li>
+	<% end %>
+</ul>
+
+<button><%= link_to "Create new!",new_politician_path %></button>

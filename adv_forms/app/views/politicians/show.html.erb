@@ -1,0 +1,10 @@
+<h2><%= @politician.name %></h2>
+<h4><%= @politician.party %></h4>
+
+<h3>Slogans you can believe in:</h3>
+<ul>
+	<% @politician.slogans.each do |i| %>
+		<li><%= i.name %></li>
+	<% end %>
+</ul>
+<p><%= link_to "Edit", edit_politician_path %></p>
