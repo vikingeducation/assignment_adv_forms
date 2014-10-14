@@ -1,0 +1,24 @@
+  <%= form_for(@politician) do |pol| %>
+  <%= render 'shared/error_messages', object: pol.object %>
+
+  <%= pol.label :name %>
+  <%= pol.text_field :name %>
+  <br />
+  <%= pol.label :party %>
+  <%= pol.text_field :party %>
+  <br />
+
+  <%= pol.collection_check_boxes :slogan_ids, Slogan.all, :id, :name, {}, {class: "pol-select"} %>
+  <br />
+
+  
+  <%= pol.fields_for :slogans do |slogan| %>
+  	<%= slogan.label :name, "New Slogan Name" %>
+  	<%= slogan.text_field :name, value: " " %>
+
+ <% end %>
+
+
+  <%= pol.submit %>
+
+  <% end %>
