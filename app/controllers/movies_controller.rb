@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def new
     @movie = Movie.new
+    @quote = @movie.quotes.build()
   end
 
   def create
@@ -14,12 +15,13 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find(params[:id])
+    @quote = @movie.quotes.build()
   end
 
   def update
     @movie = Movie.find(params[:id])
     if @movie.update_attributes(whitelisted_movie_params)
-      redirect_to new_movie_path
+      redirect_to edit_movie_path(@movie)
     else
       render 'edit'
     end
@@ -28,6 +30,6 @@ class MoviesController < ApplicationController
   private
 
   def whitelisted_movie_params
-    params.require(:movie).permit(:title, :actor_ids => [])
+    params.require(:movie).permit(:title, {:actor_ids => []}, {:quotes_attributes => [:id, :text, :_destroy]})
   end
 end
