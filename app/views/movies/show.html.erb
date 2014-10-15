@@ -1,0 +1,16 @@
+<h1><%= @movie.title %></h1>
+<%= link_to "Edit", edit_movie_path(@movie) %>
+
+<h3>Actors</h3>
+<ul>
+  <% @movie.actors.each do |actor| %>
+    <li><%= actor.name %></li>
+  <% end %>
+</ul>
+
+<h3>Quotes</h3>
+<ul>
+  <% @movie.quotes.each do |quote| %>
+    <li><%= "'#{quote.text}'" %></li>
+  <% end %>
+</ul>

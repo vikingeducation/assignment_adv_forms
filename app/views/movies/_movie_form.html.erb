@@ -2,10 +2,10 @@
   <%= movie_fields.text_field :title, placeholder: "Title" %><br>
   <%= movie_fields.collection_check_boxes :actor_ids, Actor.all, :id, :name %><br>
   <%= movie_fields.fields_for :quotes do |quote_fields| %>
+    <%= quote_fields.text_field :text %>
     <% if quote_fields.object.persisted? %>
       <%= quote_fields.check_box :_destroy %>
-    <% end %>
-    <%= quote_fields.text_field :text %>
+    <% end %><br>
   <% end %><br>
   <%= movie_fields.submit %>
 <% end %>

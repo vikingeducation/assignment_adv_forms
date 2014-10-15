@@ -18,5 +18,6 @@ Movie.all.each do |movie|
   salt = rand(10)+1
   (rand(10)+1).times do |x|
     Role.new({actor_id: Actor.find(((x+1)*salt)%23).id, movie_id: movie.id}).save
+    Quote.new({text: Faker::Hacker.say_something_smart, movie_id: movie.id}).save
   end
 end
