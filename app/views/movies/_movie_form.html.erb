@@ -1,0 +1,5 @@
+<%= form_for @movie do |f| %>
+  <%= f.text_field :title, placeholder: "Title" %>
+  <%= f.collection_check_boxes :actor_ids, Actor.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
