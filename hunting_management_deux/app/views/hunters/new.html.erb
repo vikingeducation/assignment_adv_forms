@@ -1,0 +1,27 @@
+<h1> New Hunter! </h1>
+
+<p><strong>Hunter ID:</strong> N/A </p>
+<%= form_for @hunter do |f| %>
+<p><strong>Name:</strong>  <%= f.text_field :name %></p>
+<p><strong>Town:</strong>  <%= f.text_field :town %></p>
+<p><strong>Units:</strong>  <%= f.collection_check_boxes(:unit_ids, Unit.all, :id, :name) %></p>
+  <%= f.submit "Create Hunter" %>
+<% end %>
+<br>
+<p><strong>Hunter Nested</strong></p>
+<%= form_for @hunter do |hunter_fields| %>
+  <%= hunter_fields.label :name %>
+  <%= hunter_fields.text_field :name %>
+  <br>
+  <%= hunter_fields.label :town %>
+  <%= hunter_fields.text_field :town %>
+  <br>
+  <p>Nested Units</p>
+    <div class="units_for">
+      <%= hunter_fields.fields_for :units do |unit_fields| %>
+        <%= unit_fields.label :name %>
+        <%= unit_fields.text_field :name %>
+    </div>
+    <% end %>
+  <%= hunter_fields.submit %>
+<% end %>

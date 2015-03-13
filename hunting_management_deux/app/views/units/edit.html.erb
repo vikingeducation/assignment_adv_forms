@@ -1,0 +1,10 @@
+<h1> Edit Unit <%= @unit.id %>: <%= @unit.name %></h1>
+<p>Unit ID: <%= @unit.id %></p>
+
+<%= form_for @unit do |f| %>
+  <p><strong>Name:</strong>  <%= f.text_field :name %></p>
+  <p><strong>Hunters:</strong>  <%= f.collection_check_boxes(:hunter_ids, Hunter.all, :id, :name) %></p>
+  <%= f.submit "Update unit" %>
+<% end %>
+<%= link_to "Delete unit", unit_path(@unit.id),
+              method: :delete %>

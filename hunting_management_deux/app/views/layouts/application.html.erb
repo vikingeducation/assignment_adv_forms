@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HuntingManagementDeux</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h1>Schwad's Hunter/Unit tag Management System</h1>
+<%= link_to "New Hunter", new_hunter_path %>
+<%= link_to "New Unit", new_unit_path %>
+<%= link_to "Hunters List", hunters_path %>
+<%= link_to "Units List", units_path %>
+<br><br>
+<%= yield %>
+
+</body>
+</html>

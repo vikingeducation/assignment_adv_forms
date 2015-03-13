@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Town</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @hunters.each do |hunter| %>
+    <% unless hunter.name == "" || hunter.name == nil %>
+    <tr>
+      <td><%= hunter.id %></td>
+      <td><%= hunter.name %></td>
+      <td><%= hunter.town %></td>
+      <td><%= link_to "SHOW", hunter_path(hunter.id) %></td>
+      <td><%= link_to "EDIT", edit_hunter_path(hunter.id) %></td>
+      <td><%= link_to "DELETE", hunter_path(hunter.id),
+              method: :delete %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>

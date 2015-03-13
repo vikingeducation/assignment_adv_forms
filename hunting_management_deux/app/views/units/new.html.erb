@@ -1,0 +1,26 @@
+<h1> New Unit! </h1>
+
+<p><strong>Unit ID:</strong> N/A </p>
+
+<%= form_for @unit do |f| %>
+  <p><strong>Name:</strong>  <%= f.text_field :name %></p>
+  <p><strong>Hunters:</strong>  <%= f.collection_check_boxes(:hunter_ids, Hunter.all, :id, :name) %></p>
+  <%= f.submit "Create unit" %>
+<% end %>
+<br>
+<h4>Le Nested Units</h4>
+
+<%= form_for @unit do |unit_fields| %>
+  <%= unit_fields.label :name %>
+  <h4>UNIT NAME</h4>
+  <%= unit_fields.text_field :name %>
+  <br><br>
+  <%= unit_fields.fields_for :hunters do |hunter_fields| %>
+   <p> <%= hunter_fields.label :name %>
+    <%= hunter_fields.text_field :name %></p>
+    
+    <p><%= hunter_fields.label :town %>
+    <%= hunter_fields.text_field :town %></p>
+  <% end %>
+  <%= unit_fields.submit %>
+<% end %>

@@ -1,0 +1,11 @@
+<h1> Edit Hunter <%= @hunter.id %>: <%= @hunter.name %></h1>
+<p>hunter ID: <%= @hunter.id %></p>
+
+<%= form_for @hunter do |f| %>
+  <p><strong>Name:</strong>  <%= f.text_field :name %></p>
+  <p><strong>Town:</strong>  <%= f.text_field :town %></p>
+  <p><strong>Units:</strong>  <%= f.collection_check_boxes(:unit_ids, Unit.all, :id, :name) %></p>
+  <%= f.submit "Update hunter" %>
+<% end %>
+<%= link_to "Delete hunter", hunter_path(@hunter.id),
+              method: :delete %>
