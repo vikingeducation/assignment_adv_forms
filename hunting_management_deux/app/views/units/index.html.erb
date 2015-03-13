@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>#hunters</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @units.each do |unit| %>
+    <% unless unit.name == "" || unit.name == nil %>
+    <tr>
+      <td><%= unit.id %></td>
+      <td><%= unit.name %></td>
+      <td><%= unit.hunters.count %> </td>
+      <td><%= link_to "SHOW", unit_path(unit.id) %></td>
+      <td><%= link_to "EDIT", edit_unit_path(unit.id) %></td>
+      <td><%= link_to "DELETE", unit_path(unit.id),
+              method: :delete %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>

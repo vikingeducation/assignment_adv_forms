@@ -1,0 +1,20 @@
+<h3>Unit <%= @unit.name %> </h3>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Town</th>
+    <th>Units Hunted</th>
+  </tr>
+    <% @unit.hunters.each do |hunter| %>
+      <% unless hunter.name == "" || hunter.name == nil %>
+        <tr>
+          <td><%= hunter.id %></td>
+          <td><%= hunter.name %></td>
+          <td><%= hunter.town %></td>
+          <td><%= hunter.units.count %></td>
+        </tr>
+      <% end %>
+    <% end %>
+</table>
