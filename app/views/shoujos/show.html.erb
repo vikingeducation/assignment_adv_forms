@@ -1,0 +1,23 @@
+<h1>Shoujo details</h1>
+<p><%= link_to "Edit this shoujo", edit_shoujo_path(@shoujo.id) %>
+
+<p>Name: <%= @shoujo.name %></p>
+<p>Tags: </p>
+
+<ul>
+  <% @shoujo.archetypes.each do |a| %>
+    <li><%= a.name %></li>
+  <% end %>
+</ul>
+
+<p>Anime appearances:</p>
+
+<% if @shoujo.animes.first %>
+  <% @shoujo.animes.each do |anime| %>
+    <p><strong>Title:</strong><%= anime.title %></p>
+    <p><strong>Season:</strong><%= anime.season_number %></p>
+    <p><strong>Year:</strong><%= anime.year %></p>
+  <% end %>
+<% else %>
+    <p>This shoujo does not appear in any anime.</p>
+<% end %>

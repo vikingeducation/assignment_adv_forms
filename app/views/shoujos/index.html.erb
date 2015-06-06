@@ -1,0 +1,7 @@
+<h1>All Shoujos</h1>
+<%= link_to "Create a new shoujo", new_shoujo_path %>
+<ul>
+  <% @shoujos.each do |shoujo| %>
+    <li><%= link_to shoujo.name, shoujo_path(shoujo.id) %></li>
+  <% end %>
+</ul>
