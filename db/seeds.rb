@@ -4,7 +4,6 @@ Archetype.destroy_all
 20.times do |shoujo_num|
   s = Shoujo.new
   s.name = Faker::Name.name
-  s.anime = Faker::App.name # closest thing to anime title generator
   s.save!
 end
 
