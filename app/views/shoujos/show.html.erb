@@ -1,0 +1,11 @@
+<h1>Shoujo details</h1>
+<p><%= link_to "Edit this shoujo", edit_shoujo_path(@shoujo.id) %>
+
+<p>Name: <%= @shoujo.name %></p>
+<p>Anime: <%= @shoujo.anime %></p>
+<p>Tags: </p>
+<ul>
+  <% @shoujo.archetypes.each do |a| %>
+    <li><%= a.name %></li>
+  <% end %>
+</ul>

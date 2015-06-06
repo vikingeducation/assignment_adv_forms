@@ -1,0 +1,10 @@
+<%= form_for @shoujo do |shoujo_fields| %>
+  <%= shoujo_fields.text_field :name %>
+  <%= shoujo_fields.text_field :anime %>
+
+  <h2>Select archetypes to assign to this shoujo</h2>
+
+  <%= shoujo_fields.collection_check_boxes :archetype_ids, Archetype.all, :id, :name %>
+
+  <%= shoujo_fields.submit %>
+<% end %>
