@@ -1,9 +1,32 @@
 <%= form_for @shoujo do |shoujo_fields| %>
+  <%= shoujo_fields.label :name %>
   <%= shoujo_fields.text_field :name %>
 
   <h2>Select archetypes to assign to this shoujo</h2>
 
   <%= shoujo_fields.collection_check_boxes :archetype_ids, Archetype.all, :id, :name %>
+
+  <h2>Enter anime this shoujo appears in</h2>
+
+  <%= shoujo_fields.fields_for :animes do |anime_fields| %>
+    <%= anime_fields.label :title %>
+    <%= anime_fields.text_field :title %>
+    <br />
+    <%= anime_fields.label :season_number %>
+    <%= anime_fields.number_field :season_number %>
+    <br />
+    <%= anime_fields.label :year %>
+    <%= anime_fields.number_field :year %>
+    <br />
+
+    <% if anime_fields.object.persisted? %>
+      <%= anime_fields.label :_destroy, "Delete anime?" %>
+      <%= anime_fields.check_box :_destroy %>
+      <br />
+      <br />
+    <% end %>
+
+  <% end %>
 
   <%= shoujo_fields.submit %>
 <% end %>

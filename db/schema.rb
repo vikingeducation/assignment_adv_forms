@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605073709) do
+ActiveRecord::Schema.define(version: 20150606190106) do
+
+  create_table "animes", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "season_number"
+    t.integer  "year"
+    t.integer  "shoujo_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "archetypes", force: :cascade do |t|
     t.string   "name"
@@ -28,7 +37,6 @@ ActiveRecord::Schema.define(version: 20150605073709) do
 
   create_table "shoujos", force: :cascade do |t|
     t.string   "name"
-    t.string   "anime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

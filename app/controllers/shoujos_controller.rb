@@ -5,6 +5,7 @@ class ShoujosController < ApplicationController
 
   def new
     @shoujo = Shoujo.new
+    @anime = @shoujo.animes.build
   end
 
   def show
@@ -13,6 +14,7 @@ class ShoujosController < ApplicationController
 
   def edit
     @shoujo = Shoujo.find(params[:id])
+    @anime = @shoujo.animes.build
   end
 
   def create
@@ -34,6 +36,6 @@ class ShoujosController < ApplicationController
 end
 
   def whitelisted_shoujo_params
-    params.require(:shoujo).permit(:name, :anime, archetype_ids: [])
+    params.require(:shoujo).permit(:name, :anime, archetype_ids: [], animes_attributes: [:id, :title, :season_number, :year, :_destroy] )
   end
 end
