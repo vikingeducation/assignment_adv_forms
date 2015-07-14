@@ -1,0 +1,22 @@
+<!-- Now we're adding the form for the book record -->
+	<h3>Edit Book:</h3>
+	<%= author_fields.fields_for :books, Book.find(book.id) do |book_fields| %>
+	
+    <div class="form-group form-inline">
+    	<%= book_fields.label :title %>
+    	<%= book_fields.text_field :title, class: "form-control" %>
+    </div>
+
+		<div class="form-group form-inline">
+			<%= book_fields.label :description %>
+    	<%= book_fields.text_field :description, class: "form-control" %>
+		</div>
+
+    <div class="form-group form-inline">
+      <%= book_fields.label :_destroy, "Delete Book?" %>
+      <%= book_fields.check_box :_destroy %>
+    </div>
+
+  <% end %>
+
+  <!-- / Book Form -->

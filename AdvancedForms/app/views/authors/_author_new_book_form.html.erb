@@ -1,0 +1,17 @@
+<!-- Now we're adding the form for the book record -->
+	<h3>Assign a new to this author:</h3>
+	<%= author_fields.fields_for :books, Book.new do |book_fields| %>
+	
+    <div class="form-group form-inline">
+    	<%= book_fields.label :title %>
+    	<%= book_fields.text_field :title, class: "form-control" %>
+    </div>
+
+		<div class="form-group form-inline">
+			<%= book_fields.label :description %>
+    	<%= book_fields.text_field :description, class: "form-control" %>
+		</div>
+
+  <% end %>
+
+  <!-- / Book Form -->

@@ -3,6 +3,8 @@
 Team.destroy_all
 Member.destroy_all
 TeamMember.destroy_all
+Author.destroy_all
+Book.destroy_all
 
 # Create Teams
 20.times do
@@ -33,4 +35,28 @@ Team.all.each do |team|
 		member = members.pop
 		team.members << member
 	end
+end
+
+# Create authors
+20.times do
+	a = Author.new
+
+	a.first_name = Faker::Name.first_name
+	a.last_name = Faker::Name.last_name
+	a.email = Faker::Internet.email
+
+	a.save!
+end
+
+# Create books
+20.times do
+	b = Book.new
+
+	authors = Author.pluck(:id)
+
+	b.title = Faker::Lorem.words(4).join(' ').titleize
+	b.description = Faker::Lorem.sentences(1)[0]
+	b.author_id = authors.sample
+
+	b.save!
 end
