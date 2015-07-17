@@ -1,0 +1,34 @@
+<%= form_for author do |author_fields| %>
+
+	<div class="form-group form-inline">
+		<%= author_fields.label :first_name %>
+  	<%= author_fields.text_field :first_name, class: "form-control" %>
+	</div>
+
+	<div class="form-group form-inline">
+		<%= author_fields.label :last_name %>
+  	<%= author_fields.text_field :last_name, class: "form-control" %>
+	</div>
+
+	<div class="form-group form-inline">
+		<%= author_fields.label :email %>
+  	<%= author_fields.email_field :email, class: "form-control" %>
+	</div>
+	
+	<% if author.books %>
+		
+		<% author.books.each do |book| %>
+			
+			<%= render partial: "author_edit_book_form", locals: { author_fields: author_fields, book: book } %>
+
+		<% end %>
+
+	<% end %>
+
+	<%= render partial: "author_new_book_form", locals: { author_fields: author_fields } %>
+
+	<div class="form-group form-inline">
+		<%= author_fields.submit class: "btn btn-primary" %>
+	</div>
+
+<% end %>

@@ -1,0 +1,53 @@
+<div class="col-sm-12">
+	<h2>Info for <%= "#{@author.first_name} #{@author.last_name}" %>:</h2>
+
+	<div class="col-sm-6">
+
+		<table class="table table-striped">
+			
+			<tr>
+				<td>First Name:</td>
+				<td><%= @author.first_name %></td>
+			</tr>
+
+			<tr>
+				<td>Last Name:</td>
+				<td><%= @author.last_name %></td>
+			</tr>
+
+			<tr>
+				<td>Email:</td>
+				<td><%= @author.email %></td>
+			</tr>
+
+		</table>
+
+		<h3>Books:</h3>
+	
+		<% if @author.books %>
+			
+			<table class="table table-striped">
+			
+				<% @author.books.each do |book| %>
+					
+					<tr>
+						<td>Book Title:</td>
+						<td><%= book.title %></td>
+					</tr>
+
+					<tr>
+						<td>Book Description:</td>
+						<td><%= book.description %></td>
+					</tr>
+
+				<% end %>
+
+			</table>
+
+		<% end %>
+		
+		<%= link_to "Edit Author", edit_author_path(@author.id) %>
+		
+	</div>
+
+</div>

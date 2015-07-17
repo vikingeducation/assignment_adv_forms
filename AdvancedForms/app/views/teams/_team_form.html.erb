@@ -1,0 +1,29 @@
+<%= form_for team do |f| %>
+	<ul>
+		<% @team.errors.full_messages do |error| %>
+			<li class="error"><%= error %></li>
+		<% end %>
+	</ul>
+
+	<div class="form-group">
+		<%= f.label :name, "Name:" %>
+		<%= f.text_field :name, :placeholder => "Enter Team Name" %>
+	</div>	
+
+	<div class="form-group">
+		<%= f.label :description, "Description:" %>
+		<%= f.text_field :description, :placeholder => "Enter Team Description" %>
+	</div>				
+
+	<div class="form-group col-sm-12">
+		<h3>Select Team Members:</h3>
+		<%= f.collection_check_boxes(:member_ids, Member.all, :id, :full_name) do |b| %>
+			<%= b.label(:class => "col-sm-4"){ b.check_box + " " + b.text } %>
+		<% end %>
+	</div>	
+
+	<div class="form-group ">
+		<%= f.submit class: "btn btn-primary" %>
+	</div>	
+
+<% end %>
