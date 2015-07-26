@@ -29,6 +29,8 @@ achievement_names.each do |name|
 end
 
 
+
+
 # Create 50 players
 while Player.all.count < 50
   p = Player.new
@@ -37,6 +39,23 @@ while Player.all.count < 50
   # Assign achievements to each player
   p.achievements = Achievement.all.sample(rand(Achievement.all.count))
 
-  p.save unless Player.all.include?(p)
+  unless Player.all.include?(p)
+    p.save
+  end
 end
 
+
+def generate_score(player)
+  Score.create( {
+                  :player_id => player.id,
+                  :game_type => ['Easy','Normal','Hard'].sample,
+                  :score => rand(100)
+                }
+              )
+end
+
+
+# Assign some scores to each player
+Player.all.each do |player|
+  rand(3).times { generate_score(player) }
+end

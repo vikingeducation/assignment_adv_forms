@@ -9,4 +9,6 @@ Achievement: id, name
 join: id, achievement_id, player_id
 
 
-1:X relationship:
+1:X relationship: Players & Scores
+Player: id, name
+Score: id, player_id, game_type, score
