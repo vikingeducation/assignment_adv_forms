@@ -7,6 +7,27 @@
   <%= player_fields.label :achievement_ids, 'Achievements:' %>
   <%= player_fields.collection_check_boxes :achievement_ids, Achievement.all, :id, :title %>
 
+
+
+  <h2>Player Scores:</h2>
+
+  <%= player_fields.fields_for :scores do |score_fields| %>
+
+    <%= score_fields.label :game_type, 'Game Type:' %>
+    <%= score_fields.select :game_type, ['Easy','Normal','Hard'] %>
+
+    <%= score_fields.label :score, 'Final Score:' %>
+    <%= score_fields.number_field :score %>
+
+    <% if score_fields.object.persisted? %>
+      <%= score_fields.label :_destroy, "Delete?" %>
+      <%= score_fields.check_box :_destroy %>
+    <% end %>
+
+  <br>
+  <% end %>
+
+
   <br>
   <%= player_fields.submit %>
 
