@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  root 'players#new'
 
-  resources :player, :only => [:new, :create]
+  resources :players, :only => [:new, :create, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

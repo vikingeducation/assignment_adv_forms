@@ -1,0 +1,5 @@
+<h1>
+  <%= "Edit Player #{@player.id}: #{@player.name}" %>
+</h1>
+
+<%= render :partial => 'player_form', :locals => { :player => @player } %>

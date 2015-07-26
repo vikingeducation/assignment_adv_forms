@@ -1,0 +1,13 @@
+<%= form_for player do |player_fields| %>
+
+  <%= player_fields.label :name, 'Player Name:' %>
+  <%= player_fields.text_field :name %>
+
+  <br>
+  <%= player_fields.label :achievement_ids, 'Achievements:' %>
+  <%= player_fields.collection_check_boxes :achievement_ids, Achievement.all, :id, :title %>
+
+  <br>
+  <%= player_fields.submit %>
+
+<% end %>
